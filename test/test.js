@@ -18,29 +18,20 @@ describe('number-allocator', function () {
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.firstVacant(), 0)
 
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 0)
-      assert.equal(a.intervalCount(), 0)
-    }
-    {
-      var num = a.alloc()
-      assert.equal(num, null)
+    assert.equal(a.alloc(), 0)
+    assert.equal(a.intervalCount(), 0)
+
+    assert.equal(a.alloc(), null)
     assert.equal(a.firstVacant(), null)
-    }
+
     a.free(0)
+
     assert.equal(a.intervalCount(), 1)
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 0)
-      assert.equal(a.intervalCount(), 0)
-    }
-    {
-      var num = a.alloc()
-      assert.equal(num, null)
-    }
+    assert.equal(a.alloc(), 0)
+    assert.equal(a.intervalCount(), 0)
+
+    assert.equal(a.alloc(), null)
+
     assert.equal(a.use(0), false)
     assert.equal(a.use(1), false)
     a.free(0)
@@ -48,46 +39,36 @@ describe('number-allocator', function () {
     assert.equal(a.use(0), true)
     assert.equal(a.intervalCount(), 0)
     assert.equal(a.use(1), false)
-    {
-      var num = a.alloc()
-      assert.equal(num, null)
-    }
+
+    assert.equal(a.alloc(), null)
+
     a.free(0)
     assert.equal(a.intervalCount(), 1)
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 0)
-      assert.equal(a.intervalCount(), 0)
-    }
+
+    assert.equal(a.alloc(), 0)
+    assert.equal(a.intervalCount(), 0)
+
     done()
   })
   it('should work with one number (offset)', function (done) {
     var a = new NumberAllocator(5, 5)
     assert.equal(a.intervalCount(), 1)
+    assert.equal(a.firstVacant(), 5)
 
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 5)
-      assert.equal(a.intervalCount(), 0)
-    }
-    {
-      var num = a.alloc()
-      assert.equal(num, null)
-    }
+    assert.equal(a.alloc(), 5)
+    assert.equal(a.intervalCount(), 0)
+
+    assert.equal(a.alloc(), null)
+    assert.equal(a.firstVacant(), null)
+
     a.free(5)
+
     assert.equal(a.intervalCount(), 1)
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 5)
-      assert.equal(a.intervalCount(), 0)
-    }
-    {
-      var num = a.alloc()
-      assert.equal(num, null)
-    }
+    assert.equal(a.alloc(), 5)
+    assert.equal(a.intervalCount(), 0)
+
+    assert.equal(a.alloc(), null)
+
     assert.equal(a.use(5), false)
     assert.equal(a.use(1), false)
     a.free(5)
@@ -95,79 +76,57 @@ describe('number-allocator', function () {
     assert.equal(a.use(5), true)
     assert.equal(a.intervalCount(), 0)
     assert.equal(a.use(1), false)
-    {
-      var num = a.alloc()
-      assert.equal(num, null)
-    }
+
+    assert.equal(a.alloc(), null)
+
     a.free(5)
     assert.equal(a.intervalCount(), 1)
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 5)
-      assert.equal(a.intervalCount(), 0)
-    }
+
+    assert.equal(a.alloc(), 5)
+    assert.equal(a.intervalCount(), 0)
+
     done()
   })
   it('should alloc/free work well on interval', function (done) {
     var a = new NumberAllocator(0, 4)
     assert.equal(a.intervalCount(), 1)
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 0)
-      assert.equal(a.intervalCount(), 1)
-    }
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 1)
-      assert.equal(a.intervalCount(), 1)
-    }
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 2)
-      assert.equal(a.intervalCount(), 1)
-    }
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 3)
-      assert.equal(a.intervalCount(), 1)
-    }
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 4)
-      assert.equal(a.intervalCount(), 0)
-    }
-    {
-      var num = a.alloc()
-      assert.equal(num, null)
-    }
+    assert.equal(a.alloc(), 0)
+    assert.equal(a.intervalCount(), 1)
+
+    assert.equal(a.alloc(), 1)
+    assert.equal(a.intervalCount(), 1)
+
+    assert.equal(a.alloc(), 2)
+    assert.equal(a.intervalCount(), 1)
+
+    assert.equal(a.alloc(), 3)
+    assert.equal(a.intervalCount(), 1)
+
+    assert.equal(a.alloc(), 4)
+    assert.equal(a.intervalCount(), 0)
+
+    assert.equal(a.alloc(), null)
+
     a.free(2)
     assert.equal(a.intervalCount(), 1)
-    {
-      var num = a.alloc()
-      assert.notEqual(num, null)
-      assert.equal(num, 2)
-      assert.equal(a.intervalCount(), 0)
-    }
+
+    assert.equal(a.alloc(), 2)
+    assert.equal(a.intervalCount(), 0)
+
     done()
   })
   it('should use/free work well on interval', function (done) {
     var a = new NumberAllocator(0, 4)
     assert.equal(a.intervalCount(), 1)
-    assert.equal(a.use(1), true)
-    assert.equal(a.intervalCount(), 2)
-    assert.equal(a.use(3), true)
-    assert.equal(a.intervalCount(), 3)
-    assert.equal(a.use(2), true)
-    assert.equal(a.intervalCount(), 2)
     assert.equal(a.use(0), true)
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.use(4), true)
+    assert.equal(a.intervalCount(), 1)
+    assert.equal(a.use(2), true)
+    assert.equal(a.intervalCount(), 2)
+    assert.equal(a.use(1), true)
+    assert.equal(a.intervalCount(), 1)
+    assert.equal(a.use(3), true)
     assert.equal(a.intervalCount(), 0)
     assert.equal(a.use(0), false)
     assert.equal(a.use(1), false)
@@ -182,50 +141,36 @@ describe('number-allocator', function () {
   })
   it('should clear work well and interval be updated well', function (done) {
     var a = new NumberAllocator(0, 4)
-    {
-      var value = a.alloc()
-      assert.notEqual(value, null)
-      assert.equal(value, 0)
-      assert.equal(a.intervalCount(), 1)
-    }
+
+    assert.equal(a.alloc(), 0)
+    assert.equal(a.intervalCount(), 1)
+
     assert.equal(a.use(1), true)
-    {
-      var value = a.alloc()
-      assert.notEqual(value, null)
-      assert.equal(value, 2)
-      assert.equal(a.intervalCount(), 1)
-    }
+
+    assert.equal(a.alloc(), 2)
+    assert.equal(a.intervalCount(), 1)
+
     assert.equal(a.use(3), true)
-    {
-      var value = a.alloc()
-      assert.notEqual(value, null)
-      assert.equal(value, 4)
-      assert.equal(a.intervalCount(), 0)
-    }
+
+    assert.equal(a.alloc(), 4)
+    assert.equal(a.intervalCount(), 0)
 
     a.clear()
     assert.equal(a.intervalCount(), 1)
 
-    {
-      var value = a.alloc()
-      assert.notEqual(value, null)
-      assert.equal(value, 0)
-      assert.equal(a.intervalCount(), 1)
-    }
+    assert.equal(a.alloc(), 0)
+    assert.equal(a.intervalCount(), 1)
+
     assert.equal(a.use(1), true)
-    {
-      var value = a.alloc()
-      assert.notEqual(value, null)
-      assert.equal(value, 2)
-      assert.equal(a.intervalCount(), 1)
-    }
+
+    assert.equal(a.alloc(), 2)
+    assert.equal(a.intervalCount(), 1)
+
     assert.equal(a.use(3), true)
-    {
-      var value = a.alloc()
-      assert.notEqual(value, null)
-      assert.equal(value, 4)
-      assert.equal(a.intervalCount(), 0)
-    }
+
+    assert.equal(a.alloc(), 4)
+    assert.equal(a.intervalCount(), 0)
+
     done()
   })
   it('should interval be concatinated well', function (done) {
@@ -239,65 +184,59 @@ describe('number-allocator', function () {
       return a
     }
 
-    {
-      var a = prepare()
-      a.free(0)
-      assert.equal(a.intervalCount(), 1)
-      a.free(4)
-      assert.equal(a.intervalCount(), 2)
-      a.free(2)
-      assert.equal(a.intervalCount(), 3)
-      a.free(1)
-      assert.equal(a.intervalCount(), 2)
-      // concat left and right
-      a.free(3)
-      assert.equal(a.intervalCount(), 1)
-    }
-    {
-      var a = prepare()
-      a.free(3)
-      assert.equal(a.intervalCount(), 1)
-      // ....v
-      // end concat right
-      a.free(4)
-      assert.equal(a.intervalCount(), 1)
-    }
-    {
-      var a = prepare()
-      a.free(1)
-      assert.equal(a.intervalCount(), 1)
-      // begin concat left
-      a.free(0)
-      assert.equal(a.intervalCount(), 1)
-    }
-    {
-      var a = prepare()
-      a.free(2)
-      assert.equal(a.intervalCount(), 1)
-      // begin no concat
-      a.free(0)
-      assert.equal(a.intervalCount(), 2)
-    }
-    {
-      var a = prepare()
-      a.free(1)
-      assert.equal(a.intervalCount(), 1)
-      a.free(4)
-      assert.equal(a.intervalCount(), 2)
-      // concat left
-      a.free(2)
-      assert.equal(a.intervalCount(), 2)
-    }
-    {
-      var a = prepare()
-      a.free(4)
-      assert.equal(a.intervalCount(), 1)
-      a.free(1)
-      assert.equal(a.intervalCount(), 2)
-      // concat right
-      a.free(3)
-      assert.equal(a.intervalCount(), 2)
-    }
+    var a = prepare()
+    a.free(0)
+    assert.equal(a.intervalCount(), 1)
+    a.free(4)
+    assert.equal(a.intervalCount(), 2)
+    a.free(2)
+    assert.equal(a.intervalCount(), 3)
+    a.free(1)
+    assert.equal(a.intervalCount(), 2)
+    // concat left and right
+    a.free(3)
+    assert.equal(a.intervalCount(), 1)
+
+    a = prepare()
+    a.free(3)
+    assert.equal(a.intervalCount(), 1)
+    // ....v
+    // end concat right
+    a.free(4)
+    assert.equal(a.intervalCount(), 1)
+
+    a = prepare()
+    a.free(1)
+    assert.equal(a.intervalCount(), 1)
+    // begin concat left
+    a.free(0)
+    assert.equal(a.intervalCount(), 1)
+
+    a = prepare()
+    a.free(2)
+    assert.equal(a.intervalCount(), 1)
+    // begin no concat
+    a.free(0)
+    assert.equal(a.intervalCount(), 2)
+
+    a = prepare()
+    a.free(1)
+    assert.equal(a.intervalCount(), 1)
+    a.free(4)
+    assert.equal(a.intervalCount(), 2)
+    // concat left
+    a.free(2)
+    assert.equal(a.intervalCount(), 2)
+
+    a = prepare()
+    a.free(4)
+    assert.equal(a.intervalCount(), 1)
+    a.free(1)
+    assert.equal(a.intervalCount(), 2)
+    // concat right
+    a.free(3)
+    assert.equal(a.intervalCount(), 2)
+
     done()
   })
   it('should work well with negative numbers', function (done) {
@@ -305,12 +244,12 @@ describe('number-allocator', function () {
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.use(2), true)
     assert.equal(a.intervalCount(), 2)
-    {
-      var value = a.alloc()
-      assert.notEqual(value, null)
-      assert.equal(value, -2)
-      assert.equal(a.intervalCount(), 2)
-    }
+
+    var value = a.alloc()
+    assert.notEqual(value, null)
+    assert.equal(value, -2)
+    assert.equal(a.intervalCount(), 2)
+
     assert.equal(a.use(0), true)
     assert.equal(a.intervalCount(), 3)
 

@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test": "node_modules/.bin/nyc --reporter=lcov --reporter=text ./node_modules/mocha/bin/_mocha",
+    "pretest": "standard | snazzy",
     "tslint": "tslint types/**/*.d.ts",
     "ci": "npm run tslint && npm run typescript-compile-test && npm run test && codecov",
     "browser-build": "rimraf dist/ && mkdirp dist/ && browserify number-allocator.js --standalone number-allocator > dist/number-allocator.js && uglifyjs dist/number-allocator.js --compress --mangle --output dist/number-allocator.min.js",
@@ -34,7 +35,14 @@
     "codecov": "^3.0.4",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
+    "snazzy": "^8.0.0",
+    "standard": "^11.0.1",
     "tslint": "^5.11.0",
     "typescript": "^3.2.2"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
   }
 }

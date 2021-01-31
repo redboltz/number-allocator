@@ -1,1 +1,1 @@
-export * from './lib/number-allocator'
+export { NumberAllocator } from './lib/number-allocator'

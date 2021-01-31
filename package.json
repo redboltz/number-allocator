@@ -11,12 +11,13 @@
   "scripts": {
     "test": "node_modules/.bin/nyc --reporter=lcov --reporter=text ./node_modules/mocha/bin/_mocha",
     "pretest": "standard lib",
-    "codecov" : "codecov",
+    "codecov": "codecov",
     "browser-build": "rimraf dist/ && mkdirp dist/ && browserify index.js --standalone number-allocator > dist/number-allocator.js && uglifyjs dist/number-allocator.js --compress --mangle --output dist/number-allocator.min.js",
     "typescript-compile-test": "tsc -p test/typescript/tsconfig.json",
     "typescript-compile-execute": "node test/typescript/*.js",
     "typescript-test": "npm run typescript-compile-test && npm run typescript-compile-execute",
-    "test-web": "karma start"
+    "test-web": "karma start",
+    "generate-docs": "node_modules/.bin/jsdoc -d docs lib"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "chai": "^4.2.0",
     "codecov": "^3.8.1",
     "eslint": "^7.18.0",
+    "jsdoc": "^3.6.6",
     "karma": "^6.0.3",
     "karma-browserify": "^8.0.0",
     "karma-chrome-launcher": "^3.1.0",

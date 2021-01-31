@@ -4,7 +4,7 @@
 
 'use strict'
 
-const NumberAllocator = require('../lib/number-allocator')
+const NumberAllocator = require('..')
 const assert = require('chai').assert
 
 describe('number-allocator', function () {

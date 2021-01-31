@@ -2,10 +2,10 @@ import { NumberAllocator }  from '../..'
 
 const a: NumberAllocator = new NumberAllocator(1, 5)
 
-const num1: Number = a.firstVacant()
+const num1: Number | null = a.firstVacant()
 console.log(num1)
 
-const num2: Number = a.alloc()
+const num2: Number | null = a.alloc()
 console.log(num2)
 
 const ret: Boolean = a.use(3)

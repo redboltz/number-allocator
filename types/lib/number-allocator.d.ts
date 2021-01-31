@@ -1,7 +1,9 @@
 export declare class NumberAllocator {
   /**
    * NumberAllocator constructor.
-   * The all numbers are set to `vacant` status.
+   * The all numbers are set to vacant status.
+   * Time Complexity O(1)
+   * @constructor
    * @param {Number} min  - The maximum number of allocatable. The number must be integer.
    * @param {Number} maxh - The minimum number of allocatable. The number must be integer.
    */
@@ -9,42 +11,47 @@ export declare class NumberAllocator {
 
   /**
    * Get the first vacant number. The status of the number is not updated.
-   * @return {Number} - The first vacant number. When alloc() is called then the same value will be allocated.
+   * Time Complexity O(1)
+   * @return {Number} - The first vacant number. If all numbers are occupied, return null.
+   *                    When alloc() is called then the same value will be allocated.
    */
-  public firstVacant (): Number
+  public firstVacant (): Number | null
 
   /**
-   * Allocate the first vacant number. The number become `used` status.
-   * If all numbers are used, then return null.
-   * @return {Number} - If the number is successfully allocated, then return the allocated number,
-   *                    otherwise return null.
+   * Allocate the first vacant number. The number become occupied status.
+   * Time Complexity O(1)
+   * @return {Number} - The first vacant number. If all numbers are occupied, return null.
    */
-  public alloc (): Number
+  public alloc (): Number | null
 
   /**
-   * Use the number. The number become `used` status.
-   * If the number has already been used, then return false.
+   * Use the number. The number become occupied status.
+   * If the number has already been occupied, then return false.
+   * Time Complexity O(logN) : N is the number of intervals (not numbers)
    * @param {Number} num - The number to request use.
-   * @return {Boolean} - If the number was not used, then return true, otherwise return false.
+   * @return {Boolean} - If `num` was not occupied, then return true, otherwise return false.
    */
   public use (num: Number): Boolean
 
   /**
-   * Deallocate the number. The number become `vacant` status.
-   * @param {Number} num - The number to deallocate. The number must be `used` status.
-   *                       In other words, the number must be allocated by alloc() or used be use().
+   * Deallocate the number. The number become vacant status.
+   * Time Complexity O(logN) : N is the number of intervals (not numbers)
+   * @param {Number} num - The number to deallocate. The number must be occupied status.
+   *                       In other words, the number must be allocated by alloc() or occupied be use().
    */
   public free (num: Number): void
 
   /**
-   * Clear all used numbers.
-   * The all numbers are set to `vacant` status.
+   * Clear all occupied numbers.
+   * The all numbers are set to vacant status.
+   * Time Complexity O(1)
    */
   public clear (): void
 
   /**
    * Get the number of intervals. Interval is internal structure of this library.
    * This function is for debugging.
+   * Time Complexity O(1)
    * @return {Number} - The number of intervals.
    */
   public intervalCount (): Number
@@ -52,6 +59,7 @@ export declare class NumberAllocator {
   /**
    * Dump the internal structor of the library.
    * This function is for debugging.
+   * Time Complexity O(N) : N is the number of intervals (not numbers)
    */
   dump (): void
 }

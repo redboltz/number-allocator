@@ -4,17 +4,17 @@
 
 'use strict'
 
-var NumberAllocator = require('../lib/number-allocator')
-var assert = require('chai').assert
+const NumberAllocator = require('../lib/number-allocator')
+const assert = require('chai').assert
 
 describe('number-allocator', function () {
   it('should create without newr', function (done) {
-    var a = NumberAllocator(0, 0)
+    const a = NumberAllocator(0, 0)
     assert.equal(a.intervalCount(), 1)
     done()
   })
   it('should work with one number', function (done) {
-    var a = new NumberAllocator(0, 0)
+    const a = new NumberAllocator(0, 0)
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.firstVacant(), 0)
 
@@ -51,7 +51,7 @@ describe('number-allocator', function () {
     done()
   })
   it('should work with one number (offset)', function (done) {
-    var a = new NumberAllocator(5, 5)
+    const a = new NumberAllocator(5, 5)
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.firstVacant(), 5)
 
@@ -88,7 +88,7 @@ describe('number-allocator', function () {
     done()
   })
   it('should alloc/free work well on interval', function (done) {
-    var a = new NumberAllocator(0, 4)
+    const a = new NumberAllocator(0, 4)
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.alloc(), 0)
     assert.equal(a.intervalCount(), 1)
@@ -116,7 +116,7 @@ describe('number-allocator', function () {
     done()
   })
   it('should use/free work well on interval', function (done) {
-    var a = new NumberAllocator(0, 4)
+    const a = new NumberAllocator(0, 4)
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.use(0), true)
     assert.equal(a.intervalCount(), 1)
@@ -140,7 +140,7 @@ describe('number-allocator', function () {
     done()
   })
   it('should clear work well and interval be updated well', function (done) {
-    var a = new NumberAllocator(0, 4)
+    const a = new NumberAllocator(0, 4)
 
     assert.equal(a.alloc(), 0)
     assert.equal(a.intervalCount(), 1)
@@ -174,8 +174,8 @@ describe('number-allocator', function () {
     done()
   })
   it('should interval be concatinated well', function (done) {
-    var prepare = function () {
-      var a = new NumberAllocator(0, 4)
+    const prepare = function () {
+      const a = new NumberAllocator(0, 4)
       assert.equal(a.use(0), true)
       assert.equal(a.use(1), true)
       assert.equal(a.use(2), true)
@@ -184,7 +184,7 @@ describe('number-allocator', function () {
       return a
     }
 
-    var a = prepare()
+    let a = prepare()
     a.free(0)
     assert.equal(a.intervalCount(), 1)
     a.free(4)
@@ -240,12 +240,12 @@ describe('number-allocator', function () {
     done()
   })
   it('should work well with negative numbers', function (done) {
-    var a = new NumberAllocator(-2, 3)
+    const a = new NumberAllocator(-2, 3)
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.use(2), true)
     assert.equal(a.intervalCount(), 2)
 
-    var value = a.alloc()
+    const value = a.alloc()
     assert.notEqual(value, null)
     assert.equal(value, -2)
     assert.equal(a.intervalCount(), 2)
@@ -256,7 +256,7 @@ describe('number-allocator', function () {
     done()
   })
   it('should dump', function (done) {
-    var a = new NumberAllocator(0, 4)
+    const a = new NumberAllocator(0, 4)
     a.dump()
     assert.equal(a.use(0), true)
     a.dump()
@@ -273,7 +273,7 @@ describe('number-allocator', function () {
     done()
   })
   it('should fail use the same number twice in the middle of interval', function (done) {
-    var a = new NumberAllocator(0, 4)
+    const a = new NumberAllocator(0, 4)
     assert.equal(a.use(1), true)
     assert.equal(a.use(1), false)
     done()

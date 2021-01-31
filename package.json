@@ -38,6 +38,7 @@
     "chai": "^4.2.0",
     "codecov": "^3.8.1",
     "eslint": "^7.18.0",
+    "eslint-config-standard": "16.0.2",
     "jsdoc": "^3.6.6",
     "karma": "^6.0.3",
     "karma-browserify": "^8.0.0",

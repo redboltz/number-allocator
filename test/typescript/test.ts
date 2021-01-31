@@ -1,4 +1,4 @@
-import { NumberAllocator }  from '../..'
+import { NumberAllocator } from '../..'
 
 const a: NumberAllocator = new NumberAllocator(1, 5)
 

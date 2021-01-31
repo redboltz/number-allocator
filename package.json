@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "node_modules/.bin/nyc --reporter=lcov --reporter=text ./node_modules/mocha/bin/_mocha",
-    "pretest": "standard lib",
+    "pretest": "standard ./*.js ./lib/**/*.js ./test/*.js | snazzy",
     "codecov": "codecov",
     "browser-build": "rimraf dist/ && mkdirp dist/ && browserify index.js --standalone number-allocator > dist/number-allocator.js && uglifyjs dist/number-allocator.js --compress --mangle --output dist/number-allocator.min.js",
     "typescript-compile-test": "tsc -p test/typescript/tsconfig.json",

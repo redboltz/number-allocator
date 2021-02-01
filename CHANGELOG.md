@@ -1,3 +1,6 @@
+## 1.0.4
+- Fixed module export point again. `module.exports.NumberAllocator = NumberAllocator`
+
 ## 1.0.3
 - Fixed module export point.
 

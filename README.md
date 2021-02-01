@@ -1,11 +1,11 @@
 # Unique number allocator for JavaScript.
 
-Version 1.0.3 [![number-allocator CI](https://github.com/redboltz/number-allocator/workflows/number-allocator%20CI/badge.svg)](https://github.com/redboltz/number-allocator/actions) [![codecov](https://codecov.io/gh/redboltz/number-allocator/branch/master/graph/badge.svg)](https://codecov.io/gh/redboltz/number-allocator)
+Version 1.0.4 [![number-allocator CI](https://github.com/redboltz/number-allocator/workflows/number-allocator%20CI/badge.svg)](https://github.com/redboltz/number-allocator/actions) [![codecov](https://codecov.io/gh/redboltz/number-allocator/branch/master/graph/badge.svg)](https://codecov.io/gh/redboltz/number-allocator)
 
 ## How to use
 
 ```js
-const NumberAllocator = require('number-allocator')
+const NumberAllocator = require('number-allocator').NumberAllocator
 
 // Construct a NumerAllocator that has [0-10] numbers.
 // All numbers are vacant.

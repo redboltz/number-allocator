@@ -4,5 +4,4 @@
 
 const NumberAllocator = require('./lib/number-allocator.js')
 
-module.exports = NumberAllocator
 module.exports.NumberAllocator = NumberAllocator

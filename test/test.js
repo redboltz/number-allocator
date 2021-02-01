@@ -4,7 +4,7 @@
 
 'use strict'
 
-const NumberAllocator = require('..')
+const NumberAllocator = require('..').NumberAllocator
 const assert = require('chai').assert
 
 describe('number-allocator', function () {

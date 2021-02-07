@@ -1,3 +1,7 @@
+## 1.0.5
+- Added debug logs.
+- Improved free() with vacant value behavior.
+
 ## 1.0.4
 - Fixed module export point again. `module.exports.NumberAllocator = NumberAllocator`
 

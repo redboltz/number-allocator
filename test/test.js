@@ -34,6 +34,7 @@ describe('number-allocator', function () {
 
     assert.equal(a.use(0), false)
     assert.equal(a.use(1), false)
+    assert.equal(a.use(-1), false)
     a.free(0)
     assert.equal(a.intervalCount(), 1)
     assert.equal(a.use(0), true)
@@ -276,6 +277,14 @@ describe('number-allocator', function () {
     const a = new NumberAllocator(0, 4)
     assert.equal(a.use(1), true)
     assert.equal(a.use(1), false)
+    done()
+  })
+  it('should do nothing non allocated free', function (done) {
+    const a = NumberAllocator(0, 1)
+    // if DEBUG="nuber-allocator:error" then output error log
+    a.free(0)
+    a.free(1)
+    a.free(5)
     done()
   })
 })

@@ -1,6 +1,6 @@
 # Unique number allocator for JavaScript.
 
-Version 1.0.5 [![number-allocator CI](https://github.com/redboltz/number-allocator/workflows/number-allocator%20CI/badge.svg)](https://github.com/redboltz/number-allocator/actions) [![codecov](https://codecov.io/gh/redboltz/number-allocator/branch/master/graph/badge.svg)](https://codecov.io/gh/redboltz/number-allocator)
+Version 1.0.6 [![number-allocator CI](https://github.com/redboltz/number-allocator/workflows/number-allocator%20CI/badge.svg)](https://github.com/redboltz/number-allocator/actions) [![codecov](https://codecov.io/gh/redboltz/number-allocator/branch/master/graph/badge.svg)](https://codecov.io/gh/redboltz/number-allocator)
 
 ## How to use
 
@@ -158,14 +158,14 @@ return 2
   [3-4] [6--9]
 ```
 
-When `free(1) is called. the interval is inseted.
+When `free(1)` is called. the interval is inseted.
 
 ```
 free(1)
 [1]  [3-4] [6--9]
 ```
 
-When `free(2) is called. the interval is inseted.
+When `free(2)` is called. the interval is inseted.
 
 And check the left and right intervals. If they are continuours, then concatinate to them.
 

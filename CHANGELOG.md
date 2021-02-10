@@ -1,3 +1,7 @@
+## 1.0.6
+- Fixed document.
+- Added keywords.
+
 ## 1.0.5
 - Added debug logs.
 - Improved free() with vacant value behavior.

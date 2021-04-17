@@ -1,3 +1,6 @@
+## 1.0.7
+- Fixed codecov badge on README.md.
+
 ## 1.0.6
 - Fixed document.
 - Added keywords.

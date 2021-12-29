@@ -1,6 +1,6 @@
 {
   "name": "number-allocator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A library for the unique number allocator",
   "main": "index.js",
   "types": "types/index.d.ts",
@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/redboltz/number-allocator#readme",
   "dependencies": {
-    "collections": "^5.1.12",
+    "collections": "^5.1.13",
     "debug": "^4.3.1"
   },
   "devDependencies": {

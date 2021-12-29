@@ -1,3 +1,6 @@
+## 1.0.8
+- Updated collections.js to solve https://github.com/montagejs/collections/issues/241
+
 ## 1.0.7
 - Fixed codecov badge on README.md.
 

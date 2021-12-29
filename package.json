@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/redboltz/number-allocator#readme",
   "dependencies": {
-    "collections": "^5.1.12",
+    "collections": "^5.1.13",
     "debug": "^4.3.1"
   },
   "devDependencies": {

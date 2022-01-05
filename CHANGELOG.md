@@ -1,3 +1,6 @@
+## 1.0.9
+- Migrated from collections.js to js-sdsl to remove intrinsic library extention
+
 ## 1.0.8
 - Updated collections.js to solve https://github.com/montagejs/collections/issues/241
 

@@ -1,3 +1,6 @@
+## 1.0.10
+- Fixed TypeScript number type
+
 ## 1.0.9
 - Migrated from collections.js to js-sdsl to remove intrinsic library extention
 

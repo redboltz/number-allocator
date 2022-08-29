@@ -1,3 +1,6 @@
+## 1.0.11
+- Updated js-sdsl. Bidirectional iterator is used.
+
 ## 1.0.10
 - Fixed TypeScript number type
 

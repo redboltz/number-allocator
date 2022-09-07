@@ -1,3 +1,6 @@
+## 1.0.12
+- Updated js-sdsl. updateKeyByIterator() is used.
+
 ## 1.0.11
 - Updated js-sdsl. Bidirectional iterator is used.
 

@@ -1,3 +1,6 @@
+## 1.0.14
+- Fixed README.md version.
+
 ## 1.0.13
 - **Important** Fixed invalid free operator.
 - Updated js-sdsl.

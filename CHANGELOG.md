@@ -1,3 +1,7 @@
+## 1.0.13
+- **Important** Fixed invalid free operator.
+- Updated js-sdsl.
+
 ## 1.0.12
 - Updated js-sdsl. updateKeyByIterator() is used.
 
